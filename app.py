@@ -5,14 +5,24 @@
 
 import os
 
+CARPETA = "contactos/"
+EXTENSION = '.txt'
 
 def crear_directorio():
     # Si no existe una carpeta donde almacenar contactos, la creo
-    if not os.path.exists('contactos/'):
-        os.mkdir('contactos/')
+    if not os.path.exists(CARPETA):
+        os.mkdir(CARPETA)
         
 def crear_contacto():
-    pass
+    nombre = input("Ingrese el nombre del contacto: ")
+    apellido = input("Ingrese el apellido del contacto: ")
+    numero = input("Ingrese el numero de telefono: ")
+    categoria = input("Ingrese la categoria del contacto: ")
+    n = CARPETA + nombre + ' ' + apellido + EXTENSION
+    with open(n, 'w', encoding="utf-8") as archivo:
+        archivo.write('Nombre: ' + nombre + ' ' + apellido + '\n')
+        archivo.write('Número: ' + numero + '\n')
+        archivo.write('Categoria: ' + categoria + '\n')
 
 def editar_contacto():
     pass
@@ -30,5 +40,6 @@ def eliminar_contacto():
 
 def app():
     crear_directorio()
+    crear_contacto()
     
 app()
